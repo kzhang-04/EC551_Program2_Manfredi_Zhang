@@ -1,0 +1,6 @@
+# Personal project outline, kept locally only
+EC551_Program2_Project_Outline.pdf
+
+# Python
+__pycache__/
+.pytest_cache/

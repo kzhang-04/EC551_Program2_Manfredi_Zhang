@@ -1,0 +1,6 @@
+# Reassignment and self-assignment, to exercise SSA renaming.
+X = A + B
+X = X * 2
+A = A + 1
+Y = X - A
+X = Y + X

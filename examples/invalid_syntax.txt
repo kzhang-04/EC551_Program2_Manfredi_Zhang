@@ -1,0 +1,7 @@
+# Each bad line below should be reported, with its line number.
+X = A + B
+Y = A + B + C
+Z = A / B
+W A * B
+V = A
+Q = X * Y
