@@ -1,0 +1,10 @@
+# Four independent additions feeding a tree. Limiting adders or
+# multipliers stretches the schedule, which shows off the constrained modes.
+P = A + B
+R = C + D
+S = E + F
+T = G + H
+U = P * R
+V = S * T
+W = U + V
+Z = W - A

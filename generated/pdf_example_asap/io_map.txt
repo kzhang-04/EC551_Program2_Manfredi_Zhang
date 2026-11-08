@@ -1,0 +1,25 @@
+Switch map for pdf_example.txt (asap schedule)
+
+SW[15:14] picks the view, SW[13:8] the index within it, SW[7:0] the value to load.
+Display: digits 7-6 = FSM state, 5-4 = index, 3-0 = selected value (hex).
+LED15 = done, LED13-12 = view, LED11-0 = which functional units are busy.
+Buttons: BTNC = step, BTNU = load SW[7:0] into the selected input (input view only),
+         BTNL = restart (back to IDLE, inputs kept), CPU_RESET = clear everything.
+
+View 00 (SW[15:14] = 00): functional unit outputs
+  index  0  add0 (adder 0)
+  index  1  sub0 (subtractor 0)
+  index  2  mul0 (multiplier 0)
+View 01: outputs (final once LED15 is on)
+  index  0  X (X_1), held in r0
+  index  1  Y (Y_1), held in r1
+  index  2  Z (Z_1), held in r2
+  index  3  Q (Q_1), held in r3
+View 10: registers
+  index  0  r0: X_1
+  index  1  r1: Y_1
+  index  2  r2: Z_1
+  index  3  r3: Q_1
+View 11: inputs (press BTNU to load SW[7:0] into the selected one)
+  index  0  A
+  index  1  B

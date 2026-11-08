@@ -1,0 +1,30 @@
+Expected board behavior for pdf_example.txt (asap) with A=3, B=2
+
+Setup
+  1. Press CPU_RESET.
+  2. Set SW[15:14] = 11 (input view). For each input, set SW[13:8] to its
+     index and SW[7:0] to its value, then press BTNU:
+       index  0  A = 3    SW[13:8] = 000000  SW[7:0] = 00000011
+       index  1  B = 2    SW[13:8] = 000001  SW[7:0] = 00000010
+  3. Press BTNC once to leave IDLE (state 00 -> 01).
+
+Each FU output is visible BEFORE you press BTNC. The press stores it.
+
+State 01 (step 1)
+  view 00 index  0  add0 = 0x0005 (5)   X_1 = 3 + 2
+  press BTNC: r0 <- 5 (X_1)
+
+State 02 (step 2)
+  view 00 index  0  add0 = 0x0008 (8)   Y_1 = 5 + 3
+  view 00 index  1  sub0 = 0x0003 (3)   Z_1 = 5 - 2
+  press BTNC: r1 <- 8 (Y_1), r2 <- 3 (Z_1)
+
+State 03 (step 3)
+  view 00 index  2  mul0 = 0x0006 (6)   Q_1 = 2 * 3
+  press BTNC: r3 <- 6 (Q_1)
+
+State 04 = DONE (LED15 on). Outputs, view 01:
+  index  0  X = 0x0005 (5)
+  index  1  Y = 0x0008 (8)
+  index  2  Z = 0x0003 (3)
+  index  3  Q = 0x0006 (6)

@@ -1,0 +1,17 @@
+digraph dag {
+  node [fontname="Helvetica"];
+  "A_0" [shape=box];
+  "B_0" [shape=box];
+  n0 [label="X_1\n+", shape=circle, peripheries=2];
+  n1 [label="Y_1\n+", shape=circle, peripheries=2];
+  n2 [label="Z_1\n-", shape=circle, peripheries=2];
+  n3 [label="Q_1\n*", shape=circle, peripheries=2];
+  "A_0" -> n0;
+  "B_0" -> n0;
+  n0 -> n1;
+  "A_0" -> n1;
+  n0 -> n2;
+  "B_0" -> n2;
+  "B_0" -> n3;
+  n2 -> n3;
+}

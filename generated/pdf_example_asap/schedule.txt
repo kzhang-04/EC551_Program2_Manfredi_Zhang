@@ -1,0 +1,28 @@
+mode: asap    limits: none    latency: 3 steps
+
+step 1   X_1 = A_0 + B_0
+step 2   Y_1 = X_1 + A_0
+         Z_1 = X_1 - B_0
+step 3   Q_1 = B_0 * Z_1
+
+operation        kind  ASAP  ALAP  mobility  step
+X_1 = A_0 + B_0  add      1     1         0     1
+Y_1 = X_1 + A_0  add      2     3         1     2
+Z_1 = X_1 - B_0  sub      2     2         0     2
+Q_1 = B_0 * Z_1  mul      3     3         0     3
+(ASAP and ALAP here use unlimited units and the critical path, 3 steps)
+
+hardware: 1 adder, 1 subtractor, 1 multiplier, 4 registers
+
+functional units:
+  add0   step 1: X_1 = A_0 + B_0; step 2: Y_1 = X_1 + A_0
+  sub0   step 2: Z_1 = X_1 - B_0
+  mul0   step 3: Q_1 = B_0 * Z_1
+registers:
+  r0     X_1 (steps 1-end)
+  r1     Y_1 (steps 2-end)
+  r2     Z_1 (steps 2-end)
+  r3     Q_1 (steps 3-end)
+muxes:
+  add0.b    2:1 from B, r0
+total mux inputs: 2
